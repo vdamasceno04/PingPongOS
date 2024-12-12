@@ -141,6 +141,13 @@ int after_task_join (task_t *task) {
     return 0;
 }
 
+int sem_create(semaphore_t *s, int value){
+    before_sem_create(s, value);
+    s->value = value;
+    s->queue_s = NULL;
+    after_sem_create(s, value);
+    return 0;
+}
 
 int before_sem_create (semaphore_t *s, int value) {
     // put your customization here
@@ -158,6 +165,18 @@ int after_sem_create (semaphore_t *s, int value) {
     return 0;
 }
 
+int sem_down (semaphore_t *s) {
+    // put your customization here
+    before_sem_down(s);
+    s->value -= 1;
+    if (s->value < 0){
+        //append (t, s.queue)
+        //suspend (t)
+    }
+    after_sem_down(s);
+    return 0;
+}    
+ 
 int before_sem_down (semaphore_t *s) {
     // put your customization here
 #ifdef DEBUG

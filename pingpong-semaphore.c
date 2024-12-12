@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "ppos.h"
 #include "ppos-core-globals.h"
+//#include "ppos-core-aux.c"
 
 task_t      a1, a2, b1, b2;
 semaphore_t s1, s2 ;
